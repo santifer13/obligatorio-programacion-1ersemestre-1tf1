@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\users;
+use Illuminate\Support\Facades\Auth;
 class AutoresController extends Controller
 {
     public function Registrarse(Request $request){
@@ -20,5 +21,18 @@ class AutoresController extends Controller
         }
         
     }
-   
+    public function Logearse(Request $request){
+        
+        $email = $request->input('mail');
+        $password = $request->input('password');
+        $user = users::where('email', $email)->first();
+        if ($user && $user->password == $password) {
+            Auth::loginUsingId($user->id);
+           return redirect()->intended('inicio');
+        } else {
+            return view('logeo', ['error' => true]);
+        }
+       
+        
+    }
 }

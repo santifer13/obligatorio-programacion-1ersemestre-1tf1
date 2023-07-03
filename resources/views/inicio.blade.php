@@ -5,7 +5,7 @@
     
 </head>
 <body>
-    <a href="inicio">Iniciar Sesion</a>
-    <a href="registro">Registrarse</a>
+       <a href="login">Iniciar Sesion</a>
+       <a href="registro">Registrarse</a>
 </body>
 </html>

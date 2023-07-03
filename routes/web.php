@@ -25,6 +25,8 @@ Route::get('/inicio', function () {
 Route::get('/registro', function () {
     return view('registro');
 });
-
+Route::get('/login', function () {
+    return view('logeo');
+});
 Route::post('/registro', [AutoresController::class, 'Registrarse']);
-
+Route::post('/login', [AutoresController::class, 'Logearse']);
