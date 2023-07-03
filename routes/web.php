@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AutoresController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +26,5 @@ Route::get('/registro', function () {
     return view('registro');
 });
 
-Route::post('/registro', function () {
-    return view('regsitro');
-});
+Route::post('/registro', [AutoresController::class, 'Registrarse']);
+
