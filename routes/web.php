@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AutoresController;
+use App\Http\Controllers\PostController;
 
 
 
@@ -28,5 +29,9 @@ Route::get('/registro', function () {
 Route::get('/login', function () {
     return view('logeo');
 });
+Route::get('/crear', function () {
+    return view('crearpost');
+});
 Route::post('/registro', [AutoresController::class, 'Registrarse']);
 Route::post('/login', [AutoresController::class, 'Logearse']);
+Route::post('/crear', [PostController::class, 'Postear']);
