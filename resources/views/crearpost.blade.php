@@ -15,7 +15,7 @@
     @csrf
     Titulo Post: <input type="text" name="title" id="title"><br>
     Cuerpo: <textarea id="body" name="body" rows="4" cols="50"></textarea><br>
-    Autor: <input type="text" name="autor" id="autor"><br>
+    Autor: <input type="hidden" name="autor" value="{{ auth()->user()->id }}">{{ auth()->user()->name }}<br>
     <input type="submit" name="send" id="send" value="Subir" />
     </form>
   

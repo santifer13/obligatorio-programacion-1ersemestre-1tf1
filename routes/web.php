@@ -32,6 +32,8 @@ Route::get('/login', function () {
 Route::get('/crear', function () {
     return view('crearpost');
 });
+Route::get('/mostrar', [PostController::class, 'MisPosts']);
+Route::get('/logout',[AutoresController::class, 'CerrarSesion']);
 Route::post('/registro', [AutoresController::class, 'Registrarse']);
 Route::post('/login', [AutoresController::class, 'Logearse']);
 Route::post('/crear', [PostController::class, 'Postear']);

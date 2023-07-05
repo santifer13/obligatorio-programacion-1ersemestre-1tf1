@@ -35,4 +35,11 @@ class AutoresController extends Controller
        
         
     }
+    public function CerrarSesion()
+{
+    if (Auth::check()) {
+        Auth::logout();    
+        return redirect('/');
+    } 
+ }
 }
