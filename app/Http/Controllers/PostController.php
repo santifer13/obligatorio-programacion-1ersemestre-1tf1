@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\posts;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AutoresController;
+use Illuminate\Support\Facades\Redirect;
 
 
 class PostController extends Controller
@@ -24,16 +25,18 @@ class PostController extends Controller
 
         
     }
-    public static function ObtenerPost($post){
-    
-        return posts::findOrFail($post);     
-    
-     }
 
     public function MisPosts(){
-        $post = posts::where('autor', auth()->user()->id)->get();
-     dd($post);
+        $posts = posts::where('autor', auth()->user()->id)->get();
+        return view('misposts', ['posts' => $posts]);
     }
-
+    public function Eliminar($id)
+    {   
+            posts::where('id', $id)
+            ->where('autor', auth()->user()->id)
+            ->delete();
+            return Redirect::to('/mostrar');     
+       
+    }
    
 }

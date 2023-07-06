@@ -33,6 +33,7 @@ Route::get('/crear', function () {
     return view('crearpost');
 });
 Route::get('/mostrar', [PostController::class, 'MisPosts']);
+Route::get('/eliminar/{id}', [PostController::class, 'Eliminar']);
 Route::get('/logout',[AutoresController::class, 'CerrarSesion']);
 Route::post('/registro', [AutoresController::class, 'Registrarse']);
 Route::post('/login', [AutoresController::class, 'Logearse']);
