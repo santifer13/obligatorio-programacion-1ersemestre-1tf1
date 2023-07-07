@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\users;
 use Illuminate\Support\Facades\Auth;
+
 class AutoresController extends Controller
 {
     public function Registrarse(Request $request){
@@ -13,16 +14,14 @@ class AutoresController extends Controller
             $autor -> email = $request->input('mail');
             $autor -> password = $request->input('password');
             $autor -> save();
-            return view('registro', ['autor' => $autor]);
-           
+            return view('registro', ['autor' => $autor]);           
         }
         catch(Exception $e){
             return view('registro', ['error' => $true]);
-        }
-        
+        }        
     }
-    public function Logearse(Request $request){
-        
+
+    public function Logearse(Request $request){        
         $email = $request->input('mail');
         $password = $request->input('password');
         $user = users::where('email', $email)->first();
@@ -31,15 +30,13 @@ class AutoresController extends Controller
            return redirect()->intended('inicio');
         } else {
             return view('logeo', ['error' => true]);
-        }
-       
-        
+        }        
     }
-    public function CerrarSesion()
-{
-    if (Auth::check()) {
-        Auth::logout();    
-        return redirect('/');
-    } 
- }
+
+    public function CerrarSesion(){
+        if (Auth::check()) {
+            Auth::logout();    
+            return redirect('/');
+        } 
+    }
 }

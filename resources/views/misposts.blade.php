@@ -6,7 +6,9 @@
     <title>Mis Posts</title>
 </head>
 <body>
-        @isset($posts)
+    <a href="/">Pagina Principal</a><br>
+        
+    @isset($posts)      
         @foreach ($posts as $post) 
              ========================<br>
             <a href="modificar/{{$post->id}}">Modificar</a>
@@ -15,8 +17,7 @@
              Título: {{$post->titulo}}<br>
              Contenido: {{$post->cuerpo}}<br>
              Creado: {{$post->created_at}}<br>            
-
         @endforeach
-        @endisset
+    @endisset
 </body>
 </html>
