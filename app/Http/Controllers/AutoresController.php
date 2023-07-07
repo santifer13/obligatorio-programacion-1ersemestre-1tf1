@@ -28,9 +28,8 @@ class AutoresController extends Controller
         if ($user && $user->password == $password) {
             Auth::loginUsingId($user->id);
            return redirect()->intended('inicio');
-        } else {
-            return view('logeo', ['error' => true]);
-        }        
+        }
+        return view('logeo', ['error' => true]);        
     }
 
     public function CerrarSesion(){

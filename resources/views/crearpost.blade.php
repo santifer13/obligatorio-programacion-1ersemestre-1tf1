@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
 <head>
-
     <title>Crear Post</title>
 </head>
 <body>    

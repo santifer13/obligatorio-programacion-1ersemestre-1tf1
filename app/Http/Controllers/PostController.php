@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Redirect;
 
 class PostController extends Controller
 {
+	public $meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+	public $numeroMes = 1;
+
 	public function Postear(Request $request){
 		try{            
 			$posts = new posts;
@@ -69,28 +72,24 @@ class PostController extends Controller
 	}
 	
 	public function Calendario(){
-		$meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-		$numeroMes = 1;
 		$mesesAmostrar = [];
-		foreach ($meses as $mes){
-			$contador = posts::whereMonth('created_at', $numeroMes)->count();
+		foreach ($this->meses as $mes){
+			$contador = posts::whereMonth('created_at', $this->numeroMes)->count();
 			if($contador > 0){
 				array_push($mesesAmostrar , $mes);
 			}
-			$numeroMes = $numeroMes + 1;
+			$this->numeroMes = $this->numeroMes + 1;
 		}		
 		return $mesesAmostrar;
 	}
 
 	public function MostrarDatosMes($mes){
-		$meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-		$numeroMes = 1;
-		foreach ($meses as $mes2){
-			if($mes == $mes2){
-				$posts = posts::whereMonth('created_at', $numeroMes)->get();
+		foreach ($this->meses as $mesForeach){
+			if($mes == $mesForeach){
+				$posts = posts::whereMonth('created_at', $this->numeroMes)->get();
 				return view('vistames', compact('posts'));
 			}
-			$numeroMes = $numeroMes + 1;
+			$this->numeroMes = $this->numeroMes + 1;
 		}	
 	}
 }
