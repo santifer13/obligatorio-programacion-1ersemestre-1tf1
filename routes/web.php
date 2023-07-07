@@ -33,6 +33,7 @@ Route::get('/mostrar', [PostController::class, 'MisPosts']);
 Route::get('/modificar/{id}', [PostController::class, 'VerDatosModificar']);
 Route::get('/eliminar/{id}', [PostController::class, 'Eliminar']);
 Route::get('/logout',[AutoresController::class, 'CerrarSesion']);
+Route::get('/mes/{mes}',[PostController::class, 'MostrarDatosMes']);
 
 Route::post('/registro', [AutoresController::class, 'Registrarse']);
 Route::post('/login', [AutoresController::class, 'Logearse']);

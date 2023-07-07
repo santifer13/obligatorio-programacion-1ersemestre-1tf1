@@ -18,13 +18,12 @@
     @isset($posts)
         @foreach ($posts as $post)
             ========================<br>
-            ID: {{$post->id}}<br>
             Título: {{$post->titulo}}<br>
             Contenido: {{$post->cuerpo}}<br>
             Creado: {{$post->created_at}}<br> 
             Autor: {{$post->autor}}<br>     
         @endforeach
-        
+
         <div>
         @if ($posts->previousPageUrl())
             <a href="{{ $posts->previousPageUrl() }}" >Anterior</a>
@@ -34,6 +33,15 @@
             <a href="{{ $posts->nextPageUrl() }}" >Siguiente</a>
         @endif
         </div>
-    @endisset
+    @endisset 
+    
+    <div>
+        <br>Meses con Contenido: <br>
+        @isset($meses)
+            @foreach ($meses as $mes)
+                <a href="/mes/{{$mes}}">{{$mes}}</a><br>    
+            @endforeach
+        @endisset   
+    </div>
 </body>
 </html>

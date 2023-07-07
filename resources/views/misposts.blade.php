@@ -13,7 +13,6 @@
              ========================<br>
             <a href="modificar/{{$post->id}}">Modificar</a>
             <a href="eliminar/{{$post->id}}">Eliminar</a><br>
-             ID: {{$post->id}}<br>
              Título: {{$post->titulo}}<br>
              Contenido: {{$post->cuerpo}}<br>
              Creado: {{$post->created_at}}<br>            
