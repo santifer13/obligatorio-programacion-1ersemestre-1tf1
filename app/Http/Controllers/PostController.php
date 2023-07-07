@@ -63,10 +63,7 @@ class PostController extends Controller
 
 	public function Paginar(){
 		$posts = posts::paginate(3);
-		foreach ($posts as $datos){
-		   $users=AutoresController::MostrarDatosUsuario($datos->autor);
-			$datos->autor=$users->name;
-		}
+		$posts = $this->CambiarIdPorNombre($posts);
 		$meses = $this->Calendario();
 	   return view('inicio', compact('posts', 'meses'));
 	}
@@ -87,9 +84,18 @@ class PostController extends Controller
 		foreach ($this->meses as $mesForeach){
 			if($mes == $mesForeach){
 				$posts = posts::whereMonth('created_at', $this->numeroMes)->get();
+				$posts = $this->CambiarIdPorNombre($posts);
 				return view('vistames', compact('posts'));
 			}
 			$this->numeroMes = $this->numeroMes + 1;
 		}	
+	}
+
+	public function CambiarIdPorNombre($posts){
+		foreach ($posts as $datos){
+			$users=AutoresController::MostrarDatosUsuario($datos->autor);
+			 $datos->autor=$users->name;
+		}
+		return $posts;
 	}
 }
