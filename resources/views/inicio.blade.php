@@ -22,7 +22,7 @@
             Título: {{$post->titulo}}<br>
             Contenido: {{$post->cuerpo}}<br>
             Creado: {{$post->created_at}}<br> 
-            Creado: {{$post->created_at}}<br>     
+            Autor: {{$post->autor}}<br>     
         @endforeach
         
         <div>

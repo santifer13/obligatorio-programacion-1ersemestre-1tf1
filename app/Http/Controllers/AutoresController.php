@@ -39,4 +39,9 @@ class AutoresController extends Controller
             return redirect('/');
         } 
     }
+
+    public static function MostrarDatosUsuario($id){
+        $user = users::where('id',$id)->get()->first();
+        return $user;
+    }
 }

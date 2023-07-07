@@ -59,9 +59,11 @@ class PostController extends Controller
     }
 
     public function Paginar(){
-        $posts = posts::paginate(3); 
-        return view('inicio', compact('posts'));
-    }
-
-   
+        $posts = posts::paginate(3);
+        foreach ($posts as $datos){
+           $users=AutoresController::MostrarDatosUsuario($datos->autor);
+            $datos->autor=$users->name;
+        }
+       return view('inicio', compact('posts'));
+    } 
 }
